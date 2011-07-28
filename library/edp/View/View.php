@@ -1,5 +1,5 @@
 <?php
-namespace Application;
+namespace edp\View;
 use Zf2\Stdlib\Request,
     Zf2\Mvc\RouteStack,
     Zend\View\Renderer;

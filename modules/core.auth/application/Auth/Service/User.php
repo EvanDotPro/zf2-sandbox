@@ -1,5 +1,5 @@
 <?php
-namespace Core\Service;
+namespace CoreAuth\Auth\Service;
 class User
 {
     public function getName()

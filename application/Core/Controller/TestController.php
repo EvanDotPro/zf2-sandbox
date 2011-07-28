@@ -8,7 +8,6 @@ class TestController extends ActionController
     {
         return array(
             'something' => 'IT WORKS! This is the test controller.',
-            'name'      => self::$di->get('userService')->getName()
         );
     }
 }

@@ -8,7 +8,6 @@ class IndexController extends ActionController
     {
         return array(
             'something' => 'IT WORKS!',
-            'name'      => self::$di->get('userService')->getName()
         );
     }
 
@@ -16,7 +15,6 @@ class IndexController extends ActionController
     {
         return array(
             'something' => 'IT WORKS! This is IndexController->action2()',
-            'name'      => self::$di->get('userService')->getName()
         );
 
     }
