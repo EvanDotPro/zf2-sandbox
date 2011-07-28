@@ -1,11 +1,14 @@
 <?php
 namespace Core\Controller;
-use Zf2\Mvc\ActionController;
+use edp\Mvc\ActionController;
 
 class IndexController extends ActionController
 {
     public function index()
     {
-        return array('content' => 'IT WORKS!');
+        return array(
+            'something' => 'IT WORKS!',
+            'name'      => self::$di->get('userService')->getName()
+        );
     }
 }

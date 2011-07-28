@@ -32,6 +32,7 @@ class Bootstrap
         $this->di = new DependencyInjector;
         $config   = new Configuration($this->_getDiConfiguration());
         $config->configure($this->di);
+        \edp\Mvc\ActionController::$di = $this->di;
     }
 
     public function defineEventHandlers()

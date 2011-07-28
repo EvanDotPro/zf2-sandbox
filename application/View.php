@@ -11,10 +11,8 @@ class View
 
     public function render(Request $request, $model)
     {
-        $script = $request->getMetadata('controller', 'index') 
-                . DIRECTORY_SEPARATOR 
-                . $request->getMetadata('action', 'index')
-                . '.phtml';
+        $script = $request->getMetadata('controller', 'index')
+            . '/' . $request->getMetadata('action', 'index') . '.phtml';
         $vars = array(
             'content_script' => $script,
             'content'        => $model,

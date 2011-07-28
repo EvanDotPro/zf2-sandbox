@@ -31,6 +31,7 @@ Zend\Loader\AutoloaderFactory::factory(array(
             'Zf2'         => LIBRARY_PATH . '/Zf2',
             'Application' => APPLICATION_PATH,
             'Core'        => APPLICATION_PATH . '/Core',
+            'edp'         => LIBRARY_PATH . '/edp',
         ),
     ),
 ));
