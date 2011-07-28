@@ -1,0 +1,3 @@
+[submodule "library/ZendFramework2"]
+	path = library/ZendFramework2
+	url = git://github.com/EvanDotPro/zf2.git
