@@ -26,12 +26,11 @@ set_include_path(implode(PATH_SEPARATOR, array(ZF_PATH, LIBRARY_PATH, get_includ
 // Init autoloader
 require_once 'Zend/Loader/AutoloaderFactory.php';
 Zend\Loader\AutoloaderFactory::factory(array(
-    'Zend\Loader\ClassMapAutoloader' => array(
-        APPLICATION_PATH . '/.classmap.php',
-    ),
     'Zend\Loader\StandardAutoloader' => array(
         'namespaces' => array(
             'Zf2'         => LIBRARY_PATH . '/Zf2',
+            'Application' => APPLICATION_PATH,
+            'Core'        => APPLICATION_PATH . '/Core',
         ),
     ),
 ));

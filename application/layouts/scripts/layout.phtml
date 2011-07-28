@@ -1,0 +1,21 @@
+<?= $this->broker('doctype') ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <?php $this->broker('headTitle')->append('ZF2 Sandbox'); //@TODO: Why isn't this fluid? ?>
+  <?= $this->broker('headTitle') ?>
+  <?= $this->broker('headLink') ?>
+</head>
+<body>
+<div id="header">
+    <b>My ZF2 Sandbox</b>
+</div>
+
+<?php 
+$vars = $this->vars();
+// Forcing a container here so we can escape in subviews
+echo $this->render($vars['content_script'], new \Zend\View\Variables($vars['content']));
+?>
+
+</body>
+</html>
