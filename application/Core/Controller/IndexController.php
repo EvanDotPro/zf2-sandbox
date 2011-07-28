@@ -11,4 +11,13 @@ class IndexController extends ActionController
             'name'      => self::$di->get('userService')->getName()
         );
     }
+
+    public function action2()
+    {
+        return array(
+            'something' => 'IT WORKS! This is IndexController->action2()',
+            'name'      => self::$di->get('userService')->getName()
+        );
+
+    }
 }
