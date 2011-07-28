@@ -28,22 +28,14 @@ defined('APPLICATION_ENV')
 // Ensure ZF/library is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(ZF_PATH, LIBRARY_PATH, get_include_path())));
 
+// Init config
+require_once 'Zend/Config/Config.php';
+$config = new Zend\Config\Config(include APPLICATION_PATH . '/configs/config.php');
+
 // Init autoloader
 require_once 'Zend/Loader/AutoloaderFactory.php';
-Zend\Loader\AutoloaderFactory::factory(array(
-    'Zend\Loader\StandardAutoloader' => array(
-        'namespaces' => array(
-            'Zf2'         => LIBRARY_PATH . '/Zf2',
-            'Application' => APPLICATION_PATH,
-            'Core'        => APPLICATION_PATH . '/Core',
-            'edp'         => LIBRARY_PATH . '/edp',
-            'CoreAuth'    => MODULES_PATH . '/core.auth/application',
-        ),
-    ),
-));
+Zend\Loader\AutoloaderFactory::factory($config->autoload);
 
-// Configuration
-$config = new Zend\Config\Config(include APPLICATION_PATH . '/configs/config.php');
 if (is_array($config->phpSettings)) {
     foreach ($config->phpSettings as $key => $value) {
         ini_set($key, $value);

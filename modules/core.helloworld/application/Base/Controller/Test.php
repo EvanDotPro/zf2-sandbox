@@ -1,8 +1,8 @@
 <?php
-namespace Core\Controller;
+namespace CoreHelloWorld\Base\Controller;
 use edp\Mvc\ActionController;
 
-class TestController extends ActionController
+class Test extends ActionController
 {
     public function index()
     {

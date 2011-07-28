@@ -1,8 +1,8 @@
 <?php
+// There is no need to edit this file at all. Everything in here can be 
+// overridden by modules.
 $c = array();
 $c['bootstrap_class'] = 'Application\Bootstrap';
-$c['di']['instance']['alias']['index']       = 'Core\Controller\IndexController';
-$c['di']['instance']['alias']['test']        = 'Core\Controller\TestController';
 $c['di']['instance']['alias']['view']        = 'edp\View\View';
 $c['di']['instance']['alias']['router']      = 'Zf2\Mvc\Router';
 $c['di']['instance']['Zf2\Mvc\Router']['methods']['addRoutes']['routes']['home']['class'] = 'Zf2\Mvc\Route\StaticRoute';
@@ -11,12 +11,24 @@ $c['di']['instance']['Zf2\Mvc\Router']['methods']['addRoutes']['routes']['home']
 $c['di']['instance']['Zf2\Mvc\Router']['methods']['addRoutes']['routes']['home']['params']['param']['action'] = 'index';
 $c['di']['instance']['Zf2\Mvc\Router']['methods']['addRoutes']['routes']['default']['params']['regex'] = '#^/(?P<controller>[^/]+)(/(?P<action>[^/]+))?#';
 $c['di']['instance']['Zf2\Mvc\Router']['methods']['addRoutes']['routes']['default']['params']['spec'] = '/{controller}/{action}';
-$c['di']['instance']['preferences']['Zend\View\Renderer'] = 'edp\View\PhpRenderer';
-$c['di']['instance']['edp\View\PhpRenderer']['methods']['setResolver']['resolver'] = 'Zend\View\TemplatePathStack';
-$c['di']['instance']['edp\View\PhpRenderer']['methods']['setResolver']['options']['script_paths'][] = APPLICATION_PATH . '/layouts/scripts';
-$c['di']['instance']['edp\View\PhpRenderer']['methods']['setResolver']['options']['script_paths'][] = APPLICATION_PATH . '/views/scripts';
+$c['di']['instance']['preferences']['Zend\View\Renderer'] = 'Zend\View\PhpRenderer';
+$c['di']['instance']['Zend\View\PhpRenderer']['methods']['setResolver']['resolver'] = 'Zend\View\TemplatePathStack';
+$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['Zf2']         = LIBRARY_PATH . '/Zf2';
+$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['Application'] = APPLICATION_PATH;
+$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['edp']         = LIBRARY_PATH . '/edp';
 
-// @TODO: Dynamic loop or require user to explicitly add module's configs
-require_once(MODULES_PATH . '/core.auth/application/configs/config.php'); // comment this line to "toggle" the module on and off
+require_once('config.modules.php');
+
+if (is_array($c['modules'])) {
+    foreach ($c['modules'] as $module) {
+        $cFile = MODULES_PATH . '/' . $module . '/application/configs/config.php';
+        if (file_exists($cFile)) {
+            require_once($cFile); // comment this line to "toggle" the module on and off
+        } else {
+            // Warn user if in debug mode? PHP sort of already does this but we 
+            // could make it more specific.
+        }
+    }
+}
 
 return $c;

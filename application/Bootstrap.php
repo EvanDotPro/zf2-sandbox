@@ -20,6 +20,7 @@ class Bootstrap
     {
         $this->defineDependencies();
         $this->defineEventHandlers();
+        $this->initAutoloaders();
     }
 
     public function getContainer()
@@ -45,6 +46,11 @@ class Bootstrap
             $response->setContent($content);
             return $response;
         });
+    }
+
+    public function initAutoloaders()
+    {
+
     }
 
     protected function _getDiConfiguration()

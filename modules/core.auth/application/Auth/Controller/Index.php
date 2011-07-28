@@ -7,7 +7,7 @@ class Index extends ActionController
     public function index()
     {
         return array(
-            'something' => 'IT WORKS! USER MODULE',
+            'something' => 'IT WORKS! AUTH MODULE',
             'name'      => self::$di->get('userService')->getName()
         );
     }
