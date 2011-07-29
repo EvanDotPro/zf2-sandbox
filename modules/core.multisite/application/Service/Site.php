@@ -1,7 +1,10 @@
 <?php
 namespace CoreMultisite\Service;
-class Site
+use edp\ServiceAbstract;
+class Site extends ServiceAbstract
 {
-
-
+    public function getSiteByHostname($hostname)
+    {
+        return $this->getMapper()->getSiteByHostname($hostname);
+    }
 }

@@ -19,16 +19,4 @@ $c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['edp']         = 
 
 require_once('config.modules.php');
 
-if (is_array($c['modules'])) {
-    foreach ($c['modules'] as $module) {
-        $cFile = MODULES_PATH . '/' . $module . '/application/configs/config.php';
-        if (file_exists($cFile)) {
-            require_once($cFile); // comment this line to "toggle" the module on and off
-        } else {
-            // Warn user if in debug mode? PHP sort of already does this but we 
-            // could make it more specific.
-        }
-    }
-}
-
 return $c;

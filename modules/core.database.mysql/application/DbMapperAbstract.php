@@ -1,5 +1,5 @@
 <?php
-namespace BaseApp\Model;
+namespace CoreDatabaseMysql;
 use Zend\Db\Adapter\AbstractAdapter;
 abstract class DbMapperAbstract
 {
@@ -71,8 +71,8 @@ abstract class DbMapperAbstract
             $readAdapter = $writeAdapter;
         }
 
-        $this->_readAdapter = $readAdapter;
-        $this->_writeAdapter = $writeAdapter;
+        $this->setReadAdapter($readAdapter);
+        $this->setWriteAdapter($writeAdapter);
 
         $this->_init();
     }
@@ -96,6 +96,17 @@ abstract class DbMapperAbstract
     }
 
     /**
+     * Set readAdapter.
+     *
+     * @param $readAdapter the value to be set
+     */
+    public function setReadAdapter($readAdapter)
+    {
+        $this->_readAdapter = $readAdapter;
+        return $this;
+    }
+
+    /**
      * Get the database adapter for write queries
      *
      * @return AbstractAdapter
@@ -106,13 +117,24 @@ abstract class DbMapperAbstract
     }
 
     /**
+     * Set writeAdapter.
+     *
+     * @param $writeAdapter the value to be set
+     */
+    public function setWriteAdapter($writeAdapter)
+    {
+        $this->_writeAdapter = $writeAdapter;
+        return $this;
+    }
+
+    /**
      * Get the table name
      *
      * @return string
      */
     public function getTableName()
     {
-        return $this->_name;
+        return $this->_tableName;
     }
 
     /**

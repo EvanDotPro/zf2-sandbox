@@ -4,6 +4,7 @@ use CoreDatabaseMysql\DbMapperAbstract;
 class Site extends DbMapperAbstract 
 {
     protected $_tableName = 'multisite_site';
+    protected $_modelClass = 'CoreMultisite\Model\Site';
 
     public function getSiteByHostname($hostname)
     {
@@ -12,7 +13,7 @@ class Site extends DbMapperAbstract
             ->from($this->getTableName())
             ->where('hostname = ?', $hostname);
         $row = $db->fetchRow($sql);
-        return ($row) ? new Multisite_Model_Site($row) : false;
+        return ($row) ? $this->_rowToModel($row) : false;
     }
 
     public function getSiteById($siteId)
@@ -22,7 +23,7 @@ class Site extends DbMapperAbstract
             ->from($this->getTableName())
             ->where('site_id = ?', $siteId);
         $row = $db->fetchRow($sql);
-        return ($row) ? new Multisite_Model_Site($row) : false;
+        return ($row) ? $this->_rowToModel($row) : false;
     }
 }
 

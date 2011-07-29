@@ -1,6 +1,7 @@
 <?php
 namespace CoreMultisite\Model;
-class Site
+use edp\ModelAbstract;
+class Site extends ModelAbstract
 {
     protected $_siteId;
 
@@ -27,7 +28,7 @@ class Site
      */
     public function setSiteId($siteId)
     {
-        $this->_siteId = (int)$siteId;
+        $this->_siteId = (int) $siteId;
         return $this;
     }
  
@@ -90,7 +91,7 @@ class Site
      */
     public function setMasterSite($masterSite)
     {
-        $this->_masterSite = $masterSite;
+        $this->_masterSite = (int) $masterSite;
         return $this;
     }
 }

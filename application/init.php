@@ -28,8 +28,10 @@ defined('APPLICATION_ENV')
 // Ensure ZF/library is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(ZF_PATH, LIBRARY_PATH, get_include_path())));
 
+
 // Init config
 require_once 'Zend/Config/Config.php';
+require_once 'edp/ModuleLoader.php';
 $config = new Zend\Config\Config(include APPLICATION_PATH . '/configs/config.php');
 
 // Init autoloader
