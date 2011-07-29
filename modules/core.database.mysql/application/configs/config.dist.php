@@ -1,4 +1,6 @@
 <?php
+$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['CoreDatabaseMysql'] = MODULES_PATH . '/core.database.mysql/application';
+
 $c['di']['instance']['alias']['read-adapter']  = 'Zend\Db\Adapter\PdoMysql';
 $c['di']['instance']['read-adapter']['parameters']['config']['host']        = 'changeme';    
 $c['di']['instance']['read-adapter']['parameters']['config']['dbname']      = 'changeme';                      

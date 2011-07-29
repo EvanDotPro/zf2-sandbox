@@ -1,8 +1,9 @@
 <?php
 namespace CoreMultisite\Model\Mapper;
-class Site
+use CoreDatabaseMysql\DbMapperAbstract;
+class Site extends DbMapperAbstract 
 {
-    protected $_name = 'multisite_site';
+    protected $_tableName = 'multisite_site';
 
     public function getSiteByHostname($hostname)
     {
