@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <?= $this->broker('headTitle')->direct('Sorry!'); //@TODO: Why isn't this fluid? ?>
+  <?php $this->broker('headTitle')->append('WELCOME TO SITE 2'); //@TODO: Why isn't this fluid? ?>
+  <?= $this->broker('headTitle') ?>
   <?= $this->broker('headLink') ?>
 </head>
 <body>
 <div id="header">
-    <b>The website you are looking for is not hosted on this server.</b>
+    <b>YOU ARE ON SITE 2</b>
 </div>
 <?= $this->render($this->vars('content_script'), $this->vars('content')); ?>
 </body>

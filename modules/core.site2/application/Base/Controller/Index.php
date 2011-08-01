@@ -1,5 +1,5 @@
 <?php
-namespace CoreHelloWorld\Base\Controller;
+namespace CoreSite2\Base\Controller;
 use edp\Mvc\ActionController;
 
 class Index extends ActionController
