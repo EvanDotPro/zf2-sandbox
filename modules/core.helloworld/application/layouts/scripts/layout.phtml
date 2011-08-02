@@ -9,6 +9,6 @@
 <div id="header">
     <b>The website you are looking for is not hosted on this server.</b>
 </div>
-<?= $this->render($this->vars('content_script'), $this->vars('content')); ?>
+<?= $this->render($this->vars('content_script'),  new \Zend\View\Variables($this->vars('content'))); ?>
 </body>
 </html>

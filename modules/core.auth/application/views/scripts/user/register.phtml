@@ -1,0 +1,5 @@
+<h2 class="formTitle"><?=$this->broker('translate')->direct('register');?></h2>
+<?php
+$form = $this->vars('registerForm');
+$form->setView($this);
+echo $form;
