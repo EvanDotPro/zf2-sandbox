@@ -6,10 +6,14 @@ class Register extends Base
      * _userMapper 
      * 
      * @var CoreAuth\Model\Mapper\User
-     * @access protected
      */
     protected $_userMapper;
 
+    /**
+     * init 
+     * 
+     * @return void
+     */
     public function init()
     {
         parent::init();
@@ -18,6 +22,12 @@ class Register extends Base
         //$this->removeElement('role');
     }
 
+    /**
+     * isValid 
+     * 
+     * @param mixed $values 
+     * @return bool
+     */
     public function isValid($values)
     {
         // add username db validor

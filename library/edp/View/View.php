@@ -21,8 +21,8 @@ class View
         if (method_exists($this->renderer, 'broker')) {
             $broker = $this->renderer->broker();
             $broker->load('doctype')->setDoctype('XHTML11');
-            //$broker->getClassLoader()->registerPlugin('url', 'Application\View\Helper\Url');
-            //$broker->load('url')->setRouter($this->router);
+            $broker->getClassLoader()->registerPlugin('url', 'edp\View\Helper\Url');
+            $broker->load('url')->setRouter($this->router);
         }
 
         return $this->renderer->render('layout.phtml', $vars);

@@ -41,9 +41,11 @@ class Bootstrap
         $events = StaticEventManager::getInstance();
         $view   = $this->di->get('view');
         $events->attach('Zf2\Mvc\FrontController', 'dispatch.post', function($e) use ($view) {
-            $content  = $view->render($e->getParam('request'), $e->getParam('__RESULT__'));
             $response = $e->getParam('response');
-            $response->setContent($content);
+            if ($response->getHeaders()->getStatusCode() != 302) {
+                $content  = $view->render($e->getParam('request'), $e->getParam('__RESULT__'));
+                $response->setContent($content);
+            }
             return $response;
         });
     }

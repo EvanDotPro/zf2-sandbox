@@ -5,6 +5,8 @@ $c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['CoreAuth'] = MOD
 $c['di']['instance']['alias']['user'] = 'CoreAuth\Controller\User';
 $c['di']['instance']['Zend\View\PhpRenderer']['methods']['setResolver']['options']['script_paths'][] = MODULES_PATH . '/core.auth/application/views/scripts';
 
+$c['di']['instance']['user']['parameters']['flashMessenger'] = 'Zend\Controller\Action\Helper\FlashMessenger';
+
 $c['di']['instance']['alias']['userMapper'] = 'CoreAuth\Model\Mapper\User';
 $c['di']['instance']['userMapper']['parameters']['readAdapter'] = 'read-adapter';
 $c['di']['instance']['userMapper']['parameters']['writeAdapter'] = 'write-adapter';
