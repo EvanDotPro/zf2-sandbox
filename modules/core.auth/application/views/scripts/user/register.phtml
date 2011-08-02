@@ -1,6 +1,6 @@
 <h2 class="formTitle"><?=$this->broker('translate')->direct('register');?></h2>
 <?php
-$form = $this->vars('registerForm');
+$form = $this->vars('form');
 $form->setAction($this->broker('url')->direct(array('controller' => 'user', 'action' => 'registerPost'), array('name' => 'default')))
      ->setView($this);
 
