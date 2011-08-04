@@ -30,9 +30,12 @@ class Bootstrap
 
     public function defineDependencies()
     {
+        $definition = new Definition\AggregateDefinition;
         $this->di = new DependencyInjector;
-        $config   = new Configuration($this->_getDiConfiguration());
+        $this->di->setDefinition($definition);
+        $config   = new Configuration($this->config->di);
         $config->configure($this->di);
+        $this->di->getDefinition()->addDefinition(new Definition\RuntimeDefinition);
         \edp\Mvc\ActionController::$di = $this->di;
     }
 
@@ -48,10 +51,5 @@ class Bootstrap
             }
             return $response;
         });
-    }
-
-    protected function _getDiConfiguration()
-    {
-        return $this->config->di;
     }
 }

@@ -6,7 +6,6 @@ use CoreDatabaseMysql\DbMapperAbstract,
 class User extends DbMapperAbstract 
 {
     protected $_tableName = 'user';
-    protected $_modelClass = 'CoreAuth\Model\User';
 
     public function getUserByUsername($username)
     {

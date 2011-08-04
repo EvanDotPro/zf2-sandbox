@@ -186,7 +186,7 @@ abstract class DbMapperAbstract
      */
     protected function _rowToModel($row, $class = false)
     {
-        if ($class == false) $class = $this->_modelClass;
+        if ($class == false) $class = $this->getModelClassName();
         $model = ($row) ? new $class($row) : false;
         if ($model) $this->_addModelToCache($model);
         return $model;
@@ -222,5 +222,31 @@ abstract class DbMapperAbstract
     protected function _addModelToCache($model)
     {
         return false;
+    }
+ 
+    /**
+     * Get modelClass.
+     *
+     * @return modelClass
+     */
+    public function getModelClass()
+    {
+        return $this->_modelClass;
+    }
+ 
+    /**
+     * Set modelClass.
+     *
+     * @param $modelClass the value to be set
+     */
+    public function setModelClass($modelClass)
+    {
+        $this->_modelClass = $modelClass;
+        return $this;
+    }
+
+    public function getModelClassName()
+    {
+        return get_class($this->_modelClass);
     }
 }

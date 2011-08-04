@@ -10,10 +10,11 @@ $c['di']['instance']['user']['parameters']['flashMessenger'] = 'Zend\Controller\
 $c['di']['instance']['alias']['userMapper'] = 'CoreAuth\Model\Mapper\User';
 $c['di']['instance']['userMapper']['parameters']['readAdapter'] = 'read-adapter';
 $c['di']['instance']['userMapper']['parameters']['writeAdapter'] = 'write-adapter';
+$c['di']['instance']['userMapper']['parameters']['modelClass'] = 'CoreAuth\Model\User';
 
-$c['di']['instance']['alias']['userRegisterForm'] = 'CoreAuth\Form\User\Register';
-$c['di']['instance']['userRegisterForm']['parameters']['userMapper'] = 'userMapper';
+//$c['di']['instance']['alias']['userRegisterForm'] = 'CoreAuth\Form\User\Register';
+$c['di']['instance']['CoreAuth\Form\User\Register']['parameters']['userMapper'] = 'userMapper';
 
 $c['di']['instance']['alias']['userService'] = 'CoreAuth\Service\User';
 $c['di']['instance']['userService']['parameters']['mapper'] = 'userMapper';
-$c['di']['instance']['userService']['parameters']['registerForm'] = 'userRegisterForm';
+$c['di']['instance']['userService']['parameters']['registerForm'] = 'CoreAuth\Form\User\Register';
