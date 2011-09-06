@@ -247,6 +247,6 @@ abstract class DbMapperAbstract
 
     public function getModelClassName()
     {
-        return get_class($this->_modelClass);
+        return $this->_modelClass;
     }
 }

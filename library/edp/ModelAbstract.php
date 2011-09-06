@@ -2,6 +2,9 @@
 namespace edp;
 abstract class ModelAbstract
 {
+    protected $_model;
+    protected $_broker;
+
     public function __construct($options = null)
     {
         if ($options instanceof \Zend\Config\Config) {
@@ -54,5 +57,49 @@ abstract class ModelAbstract
             }
         }
         return $array;
+    }
+ 
+    /**
+     * Get model.
+     *
+     * @return model
+     */
+    public function getModel()
+    {
+        return $this->_model;
+    }
+ 
+    /**
+     * Set model.
+     *
+     * @param $model the value to be set
+     */
+    public function setModel($model)
+    {
+        $this->_model = $model;
+        return $this;
+    }
+ 
+    /**
+     * Get broker.
+     *
+     * @return broker
+     */
+    public function getBroker()
+    {
+        return $this->_broker;
+    }
+ 
+    /**
+     * Set broker.
+     *
+     * @param $broker the value to be set
+     */
+    public function setBroker($broker)
+    {
+        if (null === $this->_broker) {
+            $this->setBroker(new ModelPluginBroker());
+        }
+        return $this->_broker;
     }
 }

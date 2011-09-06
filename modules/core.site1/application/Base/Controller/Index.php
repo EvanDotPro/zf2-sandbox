@@ -8,5 +8,6 @@ class Index extends ActionController
     {
         $siteService = self::$di->get('siteService');
         var_dump($siteService->getSiteByHostname('framework.dev'));
+        return array();
     }
 }

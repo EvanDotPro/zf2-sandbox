@@ -6,5 +6,6 @@ class Index extends ActionController
 {
     public function index()
     {
+        return array();
     }
 }
