@@ -5,6 +5,6 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        $this->response->setContent('Index Controller, Index Action');
+        $this->response->setContent('Application module -> Index controller -> Index action');
     }
 }

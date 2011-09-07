@@ -30,7 +30,9 @@ set_include_path(implode(PATH_SEPARATOR, array(ZF_PATH, LIBRARY_PATH, get_includ
 
 // Init config
 require_once 'Zend/Config/Config.php';
-$config = new Zend\Config\Config(include APPLICATION_CONFIG);
+$config = new Zend\Config\Config(include APPLICATION_CONFIG, true);
+require_once 'Edp/ModuleLoader.php';
+Edp\ModuleLoader::config($config);
 
 // Init autoloader
 require_once 'Zend/Loader/AutoloaderFactory.php';

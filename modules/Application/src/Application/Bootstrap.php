@@ -6,7 +6,8 @@ use Zend\Config\Config,
     Zend\Di\Configuration,
     Zend\Di\Definition,
     Zend\Di\Definition\Builder,
-    Zend\Di\DependencyInjector;
+    Zend\Di\DependencyInjector,
+    Edp\ModuleLoader;
 class Bootstrap
 {
     protected $config;

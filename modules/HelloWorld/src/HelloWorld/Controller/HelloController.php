@@ -5,6 +5,6 @@ class HelloController extends ActionController
 {
     public function indexAction()
     {
-        $this->response->setContent('Hello Controller, Index Action');
+        $this->response->setContent('HelloWorld module -> Hello controller -> Index action');
     }
 }
