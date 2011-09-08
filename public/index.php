@@ -1,53 +1,38 @@
 <?php
-// Define path to application directory
-defined('MODULES_PATH')
-	|| define('MODULES_PATH',
-			realpath(dirname(__FILE__) . '/../modules'));
-
-// Define path to library directory
-defined('LIBRARY_PATH')
-	|| define('LIBRARY_PATH',
-	        realpath(dirname(__FILE__) . '/../library'));
-
-// Define path to Zend Framework directory
-defined('ZF_PATH')
-	|| define('ZF_PATH',
-	        realpath(LIBRARY_PATH . '/ZendFramework2/library'));
-
 // Define application environment
 defined('APPLICATION_ENV')
-	|| define('APPLICATION_ENV',
-			(getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV')
-                                         : 'production'));
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
-// Define path to application directory
-defined('APPLICATION_CONFIG')
-	|| define('APPLICATION_CONFIG',
-			realpath(MODULES_PATH . '/Application/configs/config.php'));
+// Ensure library/ is on include_path
+set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(__DIR__ . '/../library'),
+    realpath(__DIR__ . '/../library/ZendFramework2/library'), // just for git submodule
+    get_include_path(),
+)));
 
-// Ensure ZF/library is on include_path
-set_include_path(implode(PATH_SEPARATOR, array(ZF_PATH, LIBRARY_PATH, get_include_path())));
-
-// Init config
-require_once 'Zend/Config/Config.php';
-$config = new Zend\Config\Config(include APPLICATION_CONFIG, true);
-require_once 'Edp/ModuleLoader.php';
-Edp\ModuleLoader::config($config);
-
-// Init autoloader
 require_once 'Zend/Loader/AutoloaderFactory.php';
-Zend\Loader\AutoloaderFactory::factory($config->autoload);
+Zend\Loader\AutoloaderFactory::factory(array(
+    'Zend\Loader\ClassMapAutoloader' => array(
+        __DIR__ . '/../library/ZendFramework2/modules/Zf2Module/classmap.php',
+    ),
+    'Zend\Loader\StandardAutoloader' => array(),
+));
+// Init config
+$appConfig = new Zend\Config\Config(include __DIR__ . '/../configs/application.config.php');
 
-if (is_array($config->phpSettings)) {
-    foreach ($config->phpSettings as $key => $value) {
-        ini_set($key, $value);
-    }
-}
+/**
+ * Long-hand:
+ * $modules = new Zf2Module\ModuleCollection;
+ * $modules->getLoader()->registerPaths($appConfig->modulePaths->toArray());
+ * $modules->loadModules($appConfig->modules->toArray());
+ */
+$modules = Zf2Module\ModuleCollection::fromConfig($appConfig);
+
+// Get the merged config object
+$config = $modules->getMergedConfig();
 
 // Create application, bootstrap, and run
-$app       = new Zf2Mvc\Application();
 $bootstrap = new $config->bootstrap_class($config);
-$bootstrap->bootstrap($app);
-$response  = $app->run();
-$response->getResponse();
-$response->send();
+$application = new Zf2Mvc\Application;
+$bootstrap->bootstrap($application);
+$application->run()->send();

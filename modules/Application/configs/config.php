@@ -1,8 +1,5 @@
 <?php
 $c = array();
-$c['modules']['HelloWorld'] = array('stuff here?');
-$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['Zf2Mvc']         = LIBRARY_PATH . '/ZendFramework2/modules/Zf2Mvc/src/Zf2Mvc';
-$c['autoload']['Zend\Loader\StandardAutoloader']['namespaces']['Application']    = MODULES_PATH . '/Application/src/Application';
 $c['bootstrap_class'] = 'Application\Bootstrap';
 $c['di']['instance']['alias']['controller_application_index'] = 'Application\Controller\IndexController';
 $c['di']['instance']['Zf2Mvc\Router\SimpleRouteStack']['methods']['addRoutes']['routes']['index']['type'] = 'Zf2Mvc\Router\Http\Literal';
