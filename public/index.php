@@ -18,7 +18,7 @@ Zend\Loader\AutoloaderFactory::factory(array(
     'Zend\Loader\StandardAutoloader' => array(),
 ));
 // Init config
-$appConfig = new Zend\Config\Config(include __DIR__ . '/../configs/application.config.php');
+$appConfig = include __DIR__ . '/../configs/application.config.php';
 
 /**
  * Long-hand:
