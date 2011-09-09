@@ -13,11 +13,10 @@ class Module
         return new Config(include __DIR__ . '/configs/config.php');
     }
 
-    public function init()
+    public function init($eventCollection)
     {
         $this->initAutoloader();
-        $events = StaticEventManager::getInstance();
-        $events->attach('Zf2Module\ModuleCollection', 'init.post', function($e) {
+        $eventCollection->attach('init.post', function($e) {
             // This is ran after all modules' init() have ran
         });
     }
