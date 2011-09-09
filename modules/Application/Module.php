@@ -5,7 +5,7 @@ namespace Application;
 use Zend\Config\Config,
     Zend\Loader\AutoloaderFactory;
 
-class Information
+class Module
 {
     public static function getConfig()
     {
