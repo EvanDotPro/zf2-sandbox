@@ -1,0 +1,23 @@
+<?php echo $this->broker('doctype') ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <?php echo $this->broker('headTitle')->direct('ZF2 Sandbox Application') ?>
+</head>
+<body>
+<div id="header" style="background-color: #EEEEEE; height: 30px;">
+    <div id="header-logo" style="float: left">
+        <a href="<?php echo $this->broker('url')->direct(array('controller' => 'index', 'action' => 'index'), array('name' => 'home')) ?>">
+            <b>ZF2 Sandbox Application</b></a>
+    </div>
+    <div id="header-navigation" style="float: right">
+        <a href="https://github.com/EvanDotPro/zf2-sandbox">Fork me on GitHub</a>
+    </div>
+</div>
+
+<?php 
+    echo $this->vars()->getRawValue('content');
+?>
+
+</body>
+</html>
