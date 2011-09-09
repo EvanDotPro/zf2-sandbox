@@ -14,4 +14,4 @@ Installation
 This is the easiest way to get the fully functional project, including the proper 
 version of ZF2:
 
-    git clone -b new-mvc --recursive git://github.com/EvanDotPro/zf2-sandbox.git
+    git clone --recursive git://github.com/EvanDotPro/zf2-sandbox.git
