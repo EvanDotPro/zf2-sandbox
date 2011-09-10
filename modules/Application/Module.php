@@ -3,8 +3,7 @@
 namespace Application;
 
 use Zend\Config\Config,
-    Zend\Loader\AutoloaderFactory,
-    Zend\EventManager\StaticEventManager;
+    Zend\Loader\AutoloaderFactory;
 
 class Module
 {

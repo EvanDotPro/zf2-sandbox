@@ -20,9 +20,11 @@ class Module
     protected function initAutoloader()
     {
         AutoloaderFactory::factory(array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/classmap.php',
-            )
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    'Sample' => __DIR__ . '/src/Sample',
+                ),
+            ),
         ));
     }
 }
