@@ -1,5 +1,5 @@
 <?php
-namespace site\View\Helper;
+namespace Application\View\Helper;
 
 use Zend\View\Helper\AbstractHelper,
     Zf2Mvc\Router\RouteStack;
