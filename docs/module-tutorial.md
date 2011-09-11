@@ -15,10 +15,9 @@ Once we have the the initial sandbox running, we're going to install some more m
 The modules we're going to be installing are:
 
 * **[User](https://github.com/EvanDotPro/zf2-user-module)** - A very simple user registration/authentication module I created. It provides bare bones controllers/actions/views/models/mappers/services to allow users to register and sign into a given site.
-* **[EdpCommon](https://github.com/EvanDotPro/zf2-edp-common)** - This is a module that very simply provides base model and mapper abstract classes that are used by my User module. I split this off into a separate module mainly to have a simple example of module dependencies; but also because it makes maintaining these abstract classes easier if I end up using them in a bunch of modules.
 * **[Guestbook](https://github.com/EvanDotPro/zf2-guestbook-module)** - We'll also install Matthew's Guestbook module from his [zf-quickstart](https://github.com/weierophinney/zf-quickstart) project. I broke it off into a separate repo for easy of installation for this guide.
 
-In all, you'll have 5 modules installed (technically 7 if you count [Zf2Mvc](https://github.com/EvanDotPro/zf2/tree/prototype/mvc-module/modules/Zf2Mvc) and [Zf2Module](https://github.com/EvanDotPro/zf2/tree/prototype/mvc-module/modules/Zf2Module)) and a site that allows for user registration and authentication (via MySQL), as well as a functional guestbook (via SQLite)!
+In all, you'll have 4 modules installed (technically 6 if you count [Zf2Mvc](https://github.com/EvanDotPro/zf2/tree/prototype/mvc-module/modules/Zf2Mvc) and [Zf2Module](https://github.com/EvanDotPro/zf2/tree/prototype/mvc-module/modules/Zf2Module)) and a site that allows for user registration and authentication (via MySQL), as well as a functional guestbook (via SQLite)!
 
 ## Let's begin!
 
@@ -36,13 +35,12 @@ Navigate to http://your-vhost/ and you should now see the "Welcome to Evan's Zen
 
 ![Phase 0](http://www.evan.pro/caps/886b7a.png)
 
-### Phase 1: Install the [User](https://github.com/EvanDotPro/zf2-user-module) module (and the [EdpCommon](https://github.com/EvanDotPro/zf2-edp-common) dependency):
+### Phase 1: Install the [User](https://github.com/EvanDotPro/zf2-user-module) module:
 0. `git clone git://github.com/EvanDotPro/zf2-user-module.git modules/User`
 1. Create a MySQL db and run the schema provided in `modules/User/data/schema.sql`
 2. `cp modules/User/configs/config.development.dist.php modules/User/configs/config.development.php`
 3. Set the database credentials in `modules/User/configs/config.development.php`
-4. `git clone git://github.com/EvanDotPro/zf2-edp-common.git modules/EdpCommon`
-5. Finally add `EdpCommon` and `User` to the modules array in `configs/application.config.php`
+4. Finally add `User` to the modules array in `configs/application.config.php`
 
 Navigate to http://your-vhost/user and you should be greeted with a Sign In page. You can click Sign Up at the bottom and create an account. After creating the account, you'll be redirected back to the Sign In page, and the email/password you just created should work.
 
