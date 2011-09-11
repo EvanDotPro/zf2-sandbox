@@ -13,6 +13,7 @@ The initial zf2-sandbox project has 2 modules pre-installed:
 Once we have the the initial sandbox running, we're going to install some more modules! (I could have pre-installed the rest as well, but one of my goals is to help get people thinking about stuff such as the installation process, etc.)
 
 The modules we're going to be installing are:
+
 * **[User](https://github.com/EvanDotPro/zf2-user-module)** - A very simple user registration/authentication module I created. It provides bare bones controllers/actions/views/models/mappers/services to allow users to register and sign into a given site.
 * **[EdpCommon](https://github.com/EvanDotPro/zf2-edp-common)** - This is a module that very simply provides base model and mapper abstract classes that are used by my User module. I split this off into a separate module mainly to have a simple example of module dependencies; but also because it makes maintaining these abstract classes easier if I end up using them in a bunch of modules.
 * **[Guestbook](https://github.com/EvanDotPro/zf2-guestbook-module)** - We'll also install Matthew's Guestbook module from his [zf-quickstart](https://github.com/weierophinney/zf-quickstart) project. I broke it off into a separate repo for easy of installation for this guide.
