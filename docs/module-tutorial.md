@@ -48,7 +48,8 @@ Navigate to http://your-vhost/user and you should be greeted with a Sign In page
 
 ### Phase 2: Install Matthew's [Guestbook](https://github.com/EvanDotPro/zf2-guestbook-module) module (I went ahead and set it up in a separate repo):
 0. `git clone git://github.com/EvanDotPro/zf2-guestbook-module.git modules/Guestbook`
-1. Add `Guestbook` to the modules array in `configs/application.config.php`
+1. `chmod -R +rwX modules/Guestbook/data` 
+2. Add `Guestbook` to the modules array in `configs/application.config.php`
 
 Navigate to http://your-vhost/guestbook and voilà, you have a guestbook!
 
