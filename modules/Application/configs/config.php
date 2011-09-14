@@ -8,37 +8,31 @@ $config = array(
             'view'  => 'Zend\View\PhpRenderer',
         ),
 
-        'preferences' => array(
-            'Zend\View\Renderer' => 'Zend\View\PhpRenderer',
-        ),
+        'Zend\View\HelperLoader' => array('parameters' => array(
+            'map' => array(
+                'url' => 'Application\View\Helper\Url',
+            ),
+        )),
 
-        /*
-        'Zend\View\HelperLoader' => array('methods' => array(
-            'registerPlugins' => array(
-                'map' => array(
-                    'url' => 'site\View\Helper\Url',
-                ),
-            ),
+        'Zend\View\HelperBroker' => array('parameters' => array(
+            'loader' => 'Zend\View\HelperLoader',
         )),
-        'Zend\View\HelperBroker' => array('methods' => array(
-            'setClassLoader' => array(
-                'loader' => 'Zend\View\HelperLoader',
-            ),
-        )),
-         */
-        'Zend\View\PhpRenderer' => array('methods' => array(
-            'setResolver' => array(
-                'resolver' => 'Zend\View\TemplatePathStack',
-                'options' => array(
-                    'script_paths' => array(
-                        'application' => __DIR__ . '/../views',
+
+        'Zend\View\PhpRenderer' => array(
+            'methods' => array(
+                'setResolver' => array(
+                    'resolver' => 'Zend\View\TemplatePathStack',
+                    'options' => array(
+                        'script_paths' => array(
+                            'application' => __DIR__ . '/../views',
+                        ),
                     ),
                 ),
             ),
-            'setBroker' => array(
+            'parameters' => array(
                 'broker' => 'Zend\View\HelperBroker',
-            )
-        )),
+            ),
+        ),
     )),
 
     'routes' => array(
