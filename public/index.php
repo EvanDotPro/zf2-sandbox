@@ -22,11 +22,11 @@ $appConfig = include __DIR__ . '/../configs/application.config.php';
 
 /**
  * Long-hand:
- * $modules = new Zf2Module\ModuleCollection;
+ * $modules = new Zf2Module\ModuleManager;
  * $modules->getLoader()->registerPaths($appConfig->modulePaths->toArray());
  * $modules->loadModules($appConfig->modules->toArray());
  */
-$modules = Zf2Module\ModuleCollection::fromConfig($appConfig);
+$modules = Zf2Module\ModuleManager::fromConfig($appConfig);
 
 // Get the merged config object
 $config = $modules->getMergedConfig();
