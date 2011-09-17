@@ -12,6 +12,6 @@ return new Zend\Config\Config(array(
     ),
     'module_config' => array( 
         'cache_config'  => false,
-        'cache_dir'     => null,
+        'cache_dir'     => realpath(__DIR__ . '/../data/cache'),
     ),
 ));
