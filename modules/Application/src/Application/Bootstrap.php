@@ -95,8 +95,8 @@ class Bootstrap
                 return;
             }
 
-            $request    = $e->getParam('request');
-            $routeMatch = $request->getMetadata('route-match');
+            $request    = $e->getRequest();
+            $routeMatch = $e->getRouteMatch();
             $controller = $routeMatch->getParam('controller', 'error');
             $action     = $routeMatch->getParam('action', 'index');
             $script     = $controller . '/' . $action . '.phtml';
