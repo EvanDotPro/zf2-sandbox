@@ -12,18 +12,18 @@ set_include_path(implode(PATH_SEPARATOR, array(
 
 require_once 'Zend/Loader/AutoloaderFactory.php';
 Zend\Loader\AutoloaderFactory::factory(array(
-    'Zend\Loader\ClassMapAutoloader' => array(
-        __DIR__ . '/../library/ZendFramework2/modules/Zf2Module/classmap.php',
-    ),
+    'Zend\Loader\ClassMapAutoloader' => array(__DIR__ . '/../library/ZendFramework2/modules/Zf2Module/classmap.php'), // will not be needed later
     'Zend\Loader\StandardAutoloader' => array(),
 ));
-// Init config
+
 $appConfig = include __DIR__ . '/../configs/application.config.php';
 
-$moduleManager = new Zf2Module\ModuleManager(
-    new Zf2Module\ModuleLoader($appConfig->module_paths),
+$moduleLoader = new Zend\Loader\ModuleAutoloader($appConfig->module_paths);
+$moduleLoader->register();
+
+$moduleManager = new Zend\Module\Manager(
     $appConfig->modules,
-    new Zf2Module\ModuleManagerOptions($appConfig->module_config)
+    new Zend\Module\ManagerOptions($appConfig->module_config)
 );
 
 // Get the merged config object
