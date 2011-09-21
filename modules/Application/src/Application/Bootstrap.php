@@ -1,4 +1,5 @@
 <?php
+
 namespace Application;
 
 use Zend\Config\Config,
@@ -9,7 +10,7 @@ use Zend\Config\Config,
     Zend\EventManager\StaticEventManager,
     Zend\Stdlib\ResponseDescription as Response,
     Zend\View\Variables as ViewVariables,
-    Zf2Mvc\Application;
+    Zend\Mvc\Application;
 
 class Bootstrap
 {
@@ -36,7 +37,7 @@ class Bootstrap
         $definition = new Definition\AggregateDefinition;
         $definition->addDefinition(new Definition\RuntimeDefinition);
 
-        $di = new DependencyInjector;
+        $di = new DependencyInjector();
         $di->setDefinition($definition);
 
         $config = new Configuration($this->config->di);
@@ -51,13 +52,15 @@ class Bootstrap
          * Pull the routing table from configuration, and pass it to the
          * router composed in the Application instance.
          */
-        $router = $app->getLocator()->get('Zf2Mvc\Router\SimpleRouteStack');
+
+        $router = $app->getLocator()->get('Zend\Mvc\Router\SimpleRouteStack');
         foreach ($this->config->routes as $name => $config) {
             $class   = $config->type;
             $options = $config->options;
             $route   = new $class($options);
             $router->addRoute($name, $route);
         }
+
         $app->setRouter($router);
     }
 
@@ -83,13 +86,13 @@ class Bootstrap
         $events = StaticEventManager::getInstance();
 
         // View Rendering
-        $events->attach('Zf2Mvc\Controller\ActionController', 'dispatch.post', function($e) use ($view, $layoutHandler) {
-            $vars       = $e->getParam('__RESULT__');
+        $events->attach('Zend\Mvc\Controller\ActionController', 'dispatch', function($e) use ($view, $layoutHandler) {
+            $vars       = $e->getResult();
             if ($vars instanceof Response) {
                 return;
             }
 
-            $response   = $e->getParam('response');
+            $response   = $e->getResponse();
             if ($response->getStatusCode() == 404) {
                 // Render 404 responses differently
                 return;
@@ -100,12 +103,14 @@ class Bootstrap
             $controller = $routeMatch->getParam('controller', 'error');
             $action     = $routeMatch->getParam('action', 'index');
             $script     = $controller . '/' . $action . '.phtml';
+
             if (is_object($vars)) {
                 if ($vars instanceof Traversable) {
                     $viewVars = new ViewVariables(array());
+                    $iterator = ($vars instanceof \IteratorAggregate) ? $vars->getIterator() : $vars;
                     $vars = iterator_apply($vars, function($it) use ($viewVars) {
                         $viewVars[$it->key()] = $it->current();
-                    }, $it);
+                    }, array($iterator));
                     $vars = $viewVars;
                 } else {
                     $vars = new ViewVariables((array) $vars);
@@ -120,16 +125,16 @@ class Bootstrap
             // Layout
             $layoutHandler($content, $response);
             return $response;
-        });
+        }, -10); // post filter
 
         // Render 404 pages
-        $events->attach('Zf2Mvc\Controller\ActionController', 'dispatch.post', function($e) use ($view, $layoutHandler) {
-            $vars       = $e->getParam('__RESULT__');
+        $events->attach('Zend\Mvc\Controller\ActionController', 'dispatch', function($e) use ($view, $layoutHandler) {
+            $vars       = $e->getResult();
             if ($vars instanceof Response) {
                 return;
             }
 
-            $response   = $e->getParam('response');
+            $response   = $e->getResponse();
             if ($response->getStatusCode() != 404) {
                 // Only handle 404's
                 return;
@@ -142,11 +147,11 @@ class Bootstrap
             // Layout
             $layoutHandler($content, $response);
             return $response;
-        });
+        }, 10); // post filter
 
         // Error handling
         $app->events()->attach('dispatch.error', function($e) use ($view, $layoutHandler) {
-            $error   = $e->getParam('error');
+            $error   = $e->getError();
             $app     = $e->getTarget();
 
             switch ($error) {

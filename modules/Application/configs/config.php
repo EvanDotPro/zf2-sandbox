@@ -1,5 +1,5 @@
 <?php
-$config = array(
+return array_replace_recursive(array(
     'bootstrap_class' => 'Application\Bootstrap',
     'di' => array( 'instance' => array(
         'alias' => array(
@@ -37,7 +37,7 @@ $config = array(
 
     'routes' => array(
         'default' => array(
-            'type'    => 'Zf2Mvc\Router\Http\Regex',
+            'type'    => 'Zend\Mvc\Router\Http\Regex',
             'options' => array(
                 'regex' => '/(?P<controller>[^/]+)(/(?P<action>[^/]+)?)?',
                 'defaults' => array(
@@ -48,7 +48,7 @@ $config = array(
             ),
         ),
         'home' => array(
-            'type' => 'Zf2Mvc\Router\Http\Literal',
+            'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
                 'route' => '/',
                 'defaults' => array(
@@ -58,10 +58,4 @@ $config = array(
             ),
         ),
     ),
-);
-if (file_exists(__DIR__ . '/config.' . APPLICATION_ENV . '.php')) {
-    $config = new Zend\Config\Config($config, true);
-    $config->merge(new Zend\Config\Config(include __DIR__ . '/config.' . APPLICATION_ENV . '.php'));
-    return $config->toArray();
-}
-return $config;
+), (file_exists(__DIR__ . '/config.' . APPLICATION_ENV . '.php')) ? include __DIR__ . '/config.' . APPLICATION_ENV . '.php' : array());

@@ -2,29 +2,22 @@
 
 namespace Sample;
 
-use Zend\Config\Config,
-    Zend\Loader\AutoloaderFactory;
+use Zend\Config\Config;
 
 class Module
 {
-    public static function getConfig()
-    {
-        return new Config(include __DIR__ . '/configs/config.php');
-    }
-
-    public function init($eventCollection)
+    public function init()
     {
         $this->initAutoloader();
     }
 
     protected function initAutoloader()
     {
-        AutoloaderFactory::factory(array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    'Sample' => __DIR__ . '/src/Sample',
-                ),
-            ),
-        ));
+        include __DIR__ . '/autoload_register.php';
+    }
+
+    public static function getConfig()
+    {
+        return new Config(include __DIR__ . '/configs/config.php');
     }
 }

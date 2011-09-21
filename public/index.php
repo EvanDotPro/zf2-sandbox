@@ -31,6 +31,6 @@ $config = $moduleManager->getMergedConfig();
 
 // Create application, bootstrap, and run
 $bootstrap = new $config->bootstrap_class($config);
-$application = new Zf2Mvc\Application;
+$application = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
 $application->run()->send();

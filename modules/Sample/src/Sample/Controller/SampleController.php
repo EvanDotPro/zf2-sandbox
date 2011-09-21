@@ -2,7 +2,7 @@
 
 namespace Sample\Controller;
 
-use Zf2Mvc\Controller\ActionController;
+use Zend\Mvc\Controller\ActionController;
 
 class SampleController extends ActionController
 {
