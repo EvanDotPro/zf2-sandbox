@@ -65,7 +65,7 @@ In all, there's still plenty to do and figure out, and hopefully having these ex
     * How can modules use varying view templating types? For example, one module uses twig, another uses smarty, another mustache, and yet another uses phtml. Does it make sense to have modules for each template library or system, then modules can just decalre the respective one as a dependency?
 * **Installation**
     * Importing DB Schema
-    * "Merging/compiling" of config (routes, di config, etc) to save cycles at runtime.
+    * ~~"Merging/compiling" of config (routes, di config, etc) to save cycles at runtime.~~ [SOLVED]
     * Making static assets publically available
     * Resolving dependencies
 * **Upgrades**
