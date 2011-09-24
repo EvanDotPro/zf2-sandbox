@@ -5,7 +5,7 @@ return new Zend\Config\Config(array(
         realpath(__DIR__ . '/../library/ZendFramework2/modules'),
     ),
     'modules' => array(
-        'Zf2Module', // paradox?!
+        'ZendModule', // paradox?!
         'Zf2Mvc',
         'Application',
         'Sample',
