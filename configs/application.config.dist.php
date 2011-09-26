@@ -6,7 +6,7 @@ return new Zend\Config\Config(array(
     ),
     'modules' => array(
         'ZendModule', // paradox?!
-        'Zf2Mvc',
+        'ZendMvc',
         'Application',
         'Sample',
     ),
