@@ -5,7 +5,6 @@ return new Zend\Config\Config(array(
     ),
     'modules' => array(
         'Application',
-        'Sample',
     ),
     'module_manager_options' => array( 
         'enable_cache_config' => false,

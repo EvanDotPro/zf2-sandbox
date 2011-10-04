@@ -3,8 +3,9 @@ return array(
     'di' => array(
         'instance' => array(
             'alias' => array(
-                'doctrine-pdo' => 'PDO',
-                'user-pdo'     => 'PDO',
+                'doctrine-pdo'  => 'PDO',
+                'user-pdo'      => 'PDO',
+                'guestbook-pdo' => 'PDO',
             ),
         ),
     ),
