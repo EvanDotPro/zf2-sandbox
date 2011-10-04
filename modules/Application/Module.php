@@ -7,7 +7,8 @@ use InvalidArgumentException,
     Zend\Config\Config,
     Zend\Di\Locator,
     Zend\EventManager\EventCollection,
-    Zend\EventManager\StaticEventCollection;
+    Zend\EventManager\StaticEventCollection,
+    Zend\Loader\AutoloaderFactory;
 
 class Module
 {
@@ -22,12 +23,25 @@ class Module
 
     protected function initAutoloader($env = null)
     {
-        require __DIR__ . '/autoload_register.php';
+        AutoloaderFactory::factory(array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php',
+            ),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        ));
     }
 
     public static function getConfig()
     {
-        return new Config(include __DIR__ . '/configs/module.config.php');
+        return new Config(array_replace_recursive(
+            include __DIR__ . '/configs/module.config.php',
+            include __DIR__ . '/configs/modules.config.db.php',
+            include __DIR__ . '/configs/module.config.modules.php'
+        ));
     }
     
     public function registerApplicationListeners(EventCollection $events, Locator $locator, Config $config)

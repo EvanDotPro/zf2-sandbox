@@ -1,5 +1,5 @@
 <?php
-return array_replace_recursive(array(
+return array(
     'bootstrap_class' => 'Application\Bootstrap',
     'layout' => 'layouts/layout.phtml',
     'di' => array( 'instance' => array(
@@ -59,4 +59,4 @@ return array_replace_recursive(array(
             ),
         ),
     ),
-), (file_exists(__DIR__ . '/module.config.' . APPLICATION_ENV . '.php')) ? include __DIR__ . '/module.config.' . APPLICATION_ENV . '.php' : array());
+);

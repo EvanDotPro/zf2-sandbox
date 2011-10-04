@@ -37,13 +37,13 @@ class Bootstrap
          * a ServiceLocator, and return it.
          */
         $definition = new Definition\AggregateDefinition;
-        $definition->addDefinition(new Definition\RuntimeDefinition);
 
         $di = new DependencyInjector;
         $di->setDefinition($definition);
 
         $config = new Configuration($this->config->di);
         $config->configure($di);
+        $definition->addDefinition(new Definition\RuntimeDefinition);
 
         $app->setLocator($di);
     }
