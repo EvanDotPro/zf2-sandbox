@@ -39,8 +39,7 @@ class Module
     {
         return new Config(array_replace_recursive(
             include __DIR__ . '/configs/module.config.php',
-            include __DIR__ . '/configs/modules.config.db.php',
-            include __DIR__ . '/configs/module.config.modules.php'
+            include __DIR__ . '/configs/di.config.php'
         ));
     }
     
