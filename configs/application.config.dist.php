@@ -5,9 +5,11 @@ return new Zend\Config\Config(array(
     ),
     'modules' => array(
         'Application',
+        'Guestbook',
+        'User',
     ),
     'module_manager_options' => array( 
-        'enable_cache_config' => false,
+        'enable_config_cache' => false,
         'cache_dir'           => realpath(__DIR__ . '/../data/cache'),
     ),
 ));

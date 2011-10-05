@@ -3,7 +3,7 @@ return array(
     'di' => array(
         'instance' => array(
             'alias' => array(
-                'doctrine-pdo'  => 'masterdb',
+                // This is how you "tell" the modules which database connection to use.
                 'user-pdo'      => 'masterdb',
                 'guestbook-pdo' => 'masterdb',
             ),

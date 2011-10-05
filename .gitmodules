@@ -1,3 +1,9 @@
 [submodule "library/ZendFramework2"]
 	path = library/ZendFramework2
 	url = git://github.com/EvanDotPro/zf2.git
+[submodule "modules/User"]
+	path = modules/User
+	url = git://github.com/EvanDotPro/zf2-user-module.git
+[submodule "modules/Guestbook"]
+	path = modules/Guestbook
+	url = git://github.com/EvanDotPro/zf2-guestbook-module.git
