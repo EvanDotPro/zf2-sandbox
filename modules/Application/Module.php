@@ -37,10 +37,7 @@ class Module
 
     public static function getConfig()
     {
-        return new Config(array_replace_recursive(
-            include __DIR__ . '/configs/module.config.php',
-            include __DIR__ . '/configs/di.config.php'
-        ));
+        return new Config(include __DIR__ . '/configs/module.config.php');
     }
     
     public function registerApplicationListeners(EventCollection $events, Locator $locator, Config $config)

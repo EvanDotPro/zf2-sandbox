@@ -65,4 +65,7 @@ return array_replace_recursive(array(
             ),
         ),
     ),
-), file_exists(__DIR__ . '/database.config.php') ? include __DIR__ . '/database.config.php' : array());
+) 
+ ,file_exists(__DIR__ . '/di.config.php') ? include __DIR__ . '/di.config.php' : array()
+ ,file_exists(__DIR__ . '/database.config.php') ? include __DIR__ . '/database.config.php' : array()
+);
