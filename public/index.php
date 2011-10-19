@@ -26,7 +26,7 @@ $moduleManager = new Zend\Module\Manager(
 $config = $moduleManager->getMergedConfig();
 
 // Create application, bootstrap, and run
-$bootstrap = new $config->bootstrap_class($config, $moduleManager);
+$bootstrap   = new Zend\Mvc\Bootstrap($moduleManager);
 $application = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
 $application->run()->send();

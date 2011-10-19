@@ -1,6 +1,5 @@
 <?php
 return array_replace_recursive(array(
-    'bootstrap_class' => 'Application\Bootstrap',
     'layout'          => 'layouts/layout.phtml',
     'di'              => array(
         'instance' => array(
@@ -25,18 +24,14 @@ return array_replace_recursive(array(
             ),
 
             'Zend\View\PhpRenderer' => array(
-                'methods' => array(
-                    'setResolver' => array(
-                        'resolver' => 'Zend\View\TemplatePathStack',
-                        'options'  => array(
-                            'script_paths' => array(
-                                'application' => __DIR__ . '/../views',
-                            ),
-                        ),
-                    ),
-                ),
                 'parameters' => array(
                     'broker' => 'Zend\View\HelperBroker',
+                    'resolver' => 'Zend\View\TemplatePathStack',
+                    'options'  => array(
+                        'script_paths' => array(
+                            'application' => __DIR__ . '/../views',
+                        ),
+                    ),
                 ),
             ),
         ),
