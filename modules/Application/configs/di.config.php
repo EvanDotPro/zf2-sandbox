@@ -3,9 +3,14 @@ return array(
     'di' => array(
         'instance' => array(
             'alias' => array(
-                // This is how you "tell" the modules which database connection to use.
-                'user-pdo'      => 'masterdb',
-                'guestbook-pdo' => 'masterdb',
+                'edpuser_pdo'       => 'masterdb',
+                'mwopguestbook_pdo' => 'masterdb',
+                //'edpuser_user_mapper' => 'EdpUser\Mapper\UserZendDb',
+            ),
+            'doctrine_connection' => array(
+                'parameters' => array(
+                    'pdo' => 'masterdb',
+                ),
             ),
         ),
     ),

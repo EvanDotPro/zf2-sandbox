@@ -7,3 +7,9 @@
 [submodule "vendors/EdpUser"]
 	path = vendors/EdpUser
 	url = git://github.com/EvanDotPro/EdpUser.git
+[submodule "vendors/SpiffyDoctrine"]
+	path = vendors/SpiffyDoctrine
+	url = git://github.com/SpiffyJr/SpiffyDoctrine.git
+[submodule "vendors/MwopGuestbook"]
+	path = vendors/MwopGuestbook
+	url = git://github.com/EvanDotPro/MwopGuestbook.git

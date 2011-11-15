@@ -5,6 +5,10 @@ return array(
         realpath(__DIR__ . '/../vendors'),
     ),
     'modules' => array(
+        'EdpCommon',
+        'EdpUser',
+        'MwopGuestbook',
+        'SpiffyDoctrine',
         'Application',
     ),
     'module_listener_options' => array( 
