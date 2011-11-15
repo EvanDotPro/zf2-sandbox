@@ -1,9 +1,9 @@
-[submodule "library/ZendFramework2"]
-	path = library/ZendFramework2
-	url = git://github.com/EvanDotPro/zf2.git
-[submodule "modules/User"]
-	path = modules/User
-	url = git://github.com/EvanDotPro/zf2-user-module.git
-[submodule "modules/Guestbook"]
-	path = modules/Guestbook
-	url = git://github.com/EvanDotPro/zf2-guestbook-module.git
+[submodule "library/ZendFramework"]
+	path = library/ZendFramework
+	url = git://git.zendframework.com/zf.git
+[submodule "vendors/EdpCommon"]
+	path = vendors/EdpCommon
+	url = git://github.com/EvanDotPro/EdpCommon.git
+[submodule "vendors/EdpUser"]
+	path = vendors/EdpUser
+	url = git://github.com/EvanDotPro/EdpUser.git

@@ -1,15 +1,14 @@
 <?php
-return new Zend\Config\Config(array(
+return array(
     'module_paths' => array(
         realpath(__DIR__ . '/../modules'),
+        realpath(__DIR__ . '/../vendors'),
     ),
     'modules' => array(
         'Application',
-        'Guestbook',
-        'User',
     ),
-    'module_manager_options' => array( 
-        'enable_config_cache' => false,
-        'cache_dir'           => realpath(__DIR__ . '/../data/cache'),
+    'module_listener_options' => array( 
+        'config_cache_enabled'     => false,
+        'cache_dir'                => realpath(__DIR__ . '/../data/cache'),
     ),
-));
+);
