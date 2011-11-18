@@ -16,7 +16,8 @@ version of ZF2:
 
     git clone --recursive git://github.com/EvanDotPro/zf2-sandbox.git
 
-Next, copy `modules/Application/configs/database.config.dist.php` to `modules/Application/configs/database.config.php` and edit it with your database credentials.
+Next, copy `configs/conf.d/database.config.dist.php` to
+`configs/conf.d/database.config.php` and edit it with your database credentials.
 
 Now, import the schema in `docs/fullschema.sql`.
 

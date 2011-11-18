@@ -1,6 +1,6 @@
 [submodule "library/ZendFramework"]
 	path = library/ZendFramework
-	url = git://git.zendframework.com/zf.git
+	url = git://github.com/zendframework/zf2.git
 [submodule "vendors/EdpCommon"]
 	path = vendors/EdpCommon
 	url = git://github.com/EvanDotPro/EdpCommon.git

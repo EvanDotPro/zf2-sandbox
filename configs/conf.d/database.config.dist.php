@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copy this file to database.config.php (no '.dist') BEFORE editing!
+ */
+
 $mdb = array(
     'dbname' => 'changeme',
     'user'   => 'changeme',

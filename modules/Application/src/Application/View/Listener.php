@@ -169,9 +169,15 @@ class Listener implements ListenerAggregate
             return;
         }
 
-        $vars = array('message' => 'Page not found.');
+        $vars = array(
+            'message'            => 'Page not found.',
+            'display_exceptions' => $this->displayExceptions(),
+        );
+        if ($e->getParam('exception')) {
+            $vars['exception'] = $e->getParam('exception');
+        }
 
-        $content = $this->view->render('pages/404.phtml', $vars);
+        $content = $this->view->render('error/index.phtml', $vars);
 
         $e->setResult($content);
 
@@ -192,8 +198,12 @@ class Listener implements ListenerAggregate
             case Application::ERROR_CONTROLLER_NOT_FOUND:
             case Application::ERROR_CONTROLLER_INVALID:
                 $vars = array(
-                    'message' => 'Page not found.',
+                    'message'            => 'Page not found.',
+                    'display_exceptions' => $this->displayExceptions(),
                 );
+                if ($e->getParam('exception')) {
+                    $vars['exception'] = $e->getParam('exception');
+                }
                 $response->setStatusCode(404);
                 break;
 

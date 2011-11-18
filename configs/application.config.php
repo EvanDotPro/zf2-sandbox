@@ -14,5 +14,6 @@ return array(
     'module_listener_options' => array( 
         'config_cache_enabled'     => false,
         'cache_dir'                => realpath(__DIR__ . '/../data/cache'),
+        'application_environment'  => getenv('APPLICATION_ENV'),
     ),
 );

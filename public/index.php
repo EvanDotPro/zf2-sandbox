@@ -22,6 +22,8 @@ $listenerOptions = new Zend\Module\Listener\ListenerOptions($appConfig['module_l
 $moduleManager->setDefaultListenerOptions($listenerOptions);
 $moduleManager->loadModules();
 
+$moduleManager->getConfigListener()->mergeGlobDirectory(dirname(__DIR__) . '/configs/conf.d/*.config.php');
+
 // Create application, bootstrap, and run
 $bootstrap      = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
 $application    = new Zend\Mvc\Application;
