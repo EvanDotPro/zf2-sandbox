@@ -20,9 +20,8 @@ $moduleLoader->register();
 $moduleManager = new Zend\Module\Manager($appConfig['modules']);
 $listenerOptions = new Zend\Module\Listener\ListenerOptions($appConfig['module_listener_options']);
 $moduleManager->setDefaultListenerOptions($listenerOptions);
+$moduleManager->getConfigListener()->addConfigGlobPath(dirname(__DIR__) . '/configs/conf.d/*.config.php');
 $moduleManager->loadModules();
-
-$moduleManager->getConfigListener()->mergeGlobDirectory(dirname(__DIR__) . '/configs/conf.d/*.config.php');
 
 // Create application, bootstrap, and run
 $bootstrap      = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
