@@ -16,10 +16,10 @@ version of ZF2:
 
     git clone --recursive git://github.com/EvanDotPro/zf2-sandbox.git
 
-Next, copy `configs/conf.d/database.config.dist.php` to
-`configs/conf.d/database.config.php` and edit it with your database credentials.
+Next, copy `conf.d/database.config.dist.php` to
+`conf.d/database.config.php` and edit it with your database credentials.
 
-Now, import the schema in `docs/fullschema.sql`.
+Now, import the schema in `data/fullschema.sql`.
 
 Try it out! Go to http://yourvhost/user and you should be greeted with a login
 screen. Also you'll have a guestbook at http://yourvhost/guestbook.
@@ -28,5 +28,5 @@ The interesting thing is that the `EdpUser` module is using Doctrine2 by default
 while the `MwopGuestbook` module is using Zend\Db\Table, yet they are sharing a
 single configured PDO instance. Cool, huh?
 
-By the way, you can switch the `EdpUser` module to use Zend\Db instead by simply
-uncommenting one line in `modules/Application/configs/di.config.php`.
+By the way, you can switch the `EdpUser` module to use Zend\Db instead of
+Doctrine by simply uncommenting one line in `conf.d/module.edpuser.config.php`.
