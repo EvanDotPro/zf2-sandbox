@@ -1,8 +1,4 @@
 <?php
-// Define application environment
-defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
-
 require_once dirname(__DIR__) . '/vendor/ZendFramework/library/Zend/Loader/AutoloaderFactory.php';
 Zend\Loader\AutoloaderFactory::factory(array('Zend\Loader\StandardAutoloader' => array()));
 
@@ -18,7 +14,7 @@ $moduleManager->getConfigListener()->addConfigGlobPath(dirname(__DIR__) . '/conf
 $moduleManager->loadModules();
 
 // Create application, bootstrap, and run
-$bootstrap      = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
-$application    = new Zend\Mvc\Application;
+$bootstrap   = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
+$application = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
 $application->run()->send();
