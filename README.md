@@ -16,8 +16,8 @@ version of ZF2:
 
     git clone --recursive git://github.com/EvanDotPro/zf2-sandbox.git
 
-Next, copy `conf.d/database.config.dist.php` to
-`conf.d/database.config.php` and edit it with your database credentials.
+Next, copy `config/autoload/database.config.dist.php` to
+`config/autoload/database.config.php` and edit it with your database credentials.
 
 Now, import the schema in `data/fullschema.sql`.
 
@@ -29,4 +29,4 @@ while the `MwopGuestbook` module is using Zend\Db\Table, yet they are sharing a
 single configured PDO instance. Cool, huh?
 
 By the way, you can switch the `EdpUser` module to use Zend\Db instead of
-Doctrine by simply uncommenting one line in `conf.d/module.edpuser.config.php`.
+Doctrine by simply uncommenting one line in `config/autoload/module.edpuser.config.php`.
