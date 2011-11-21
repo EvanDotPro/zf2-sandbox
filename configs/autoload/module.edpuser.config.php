@@ -65,11 +65,11 @@ $edpUserSettings = array(
      * Login After Registration
      *
      * Automatically logs the user in after they successfully register. Default 
-     * value is false. 
+     * value is true. 
      *
      * Accepted values: boolean true or false
      */
-    'login_after_registration' => false,
+    'login_after_registration' => true,
 
     /**
      * Registration Form Captcha 
