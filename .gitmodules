@@ -1,15 +1,15 @@
 [submodule "library/ZendFramework"]
 	path = library/ZendFramework
 	url = git://github.com/zendframework/zf2.git
-[submodule "vendors/EdpCommon"]
-	path = vendors/EdpCommon
+[submodule "vendor/EdpCommon"]
+	path = vendor/EdpCommon
 	url = git://github.com/EvanDotPro/EdpCommon.git
-[submodule "vendors/EdpUser"]
-	path = vendors/EdpUser
+[submodule "vendor/EdpUser"]
+	path = vendor/EdpUser
 	url = git://github.com/EvanDotPro/EdpUser.git
-[submodule "vendors/SpiffyDoctrine"]
-	path = vendors/SpiffyDoctrine
+[submodule "vendor/SpiffyDoctrine"]
+	path = vendor/SpiffyDoctrine
 	url = git://github.com/SpiffyJr/SpiffyDoctrine.git
-[submodule "vendors/MwopGuestbook"]
-	path = vendors/MwopGuestbook
+[submodule "vendor/MwopGuestbook"]
+	path = vendor/MwopGuestbook
 	url = git://github.com/EvanDotPro/MwopGuestbook.git
