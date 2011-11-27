@@ -97,7 +97,7 @@ class Listener implements ListenerAggregate
             $response->setStatusCode(404);
         }
 
-        $script     = 'pages/' . $page . '.phtml';
+        $script     = 'error/' . $page . '.phtml';
 
         // Action content
         $content    = $this->view->render($script);
@@ -171,13 +171,11 @@ class Listener implements ListenerAggregate
 
         $vars = array(
             'message'            => 'Page not found.',
+            'exception'          => $e->getParam('exception'),
             'display_exceptions' => $this->displayExceptions(),
         );
-        if ($e->getParam('exception')) {
-            $vars['exception'] = $e->getParam('exception');
-        }
 
-        $content = $this->view->render('error/index.phtml', $vars);
+        $content = $this->view->render('error/404.phtml', $vars);
 
         $e->setResult($content);
 
@@ -199,11 +197,9 @@ class Listener implements ListenerAggregate
             case Application::ERROR_CONTROLLER_INVALID:
                 $vars = array(
                     'message'            => 'Page not found.',
+                    'exception'          => $e->getParam('exception'),
                     'display_exceptions' => $this->displayExceptions(),
                 );
-                if ($e->getParam('exception')) {
-                    $vars['exception'] = $e->getParam('exception');
-                }
                 $response->setStatusCode(404);
                 break;
 
