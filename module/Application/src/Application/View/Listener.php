@@ -83,7 +83,7 @@ class Listener implements ListenerAggregate
         $response = $e->getResponse();
         if ($response->isNotFound()) {
             return;
-        } 
+        }
 
         $routeMatch = $e->getRouteMatch();
 

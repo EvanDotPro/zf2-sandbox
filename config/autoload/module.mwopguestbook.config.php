@@ -6,7 +6,7 @@ $mwopGuestbookSettings = array(
     /**
      * PDO Connection DI alias
      *
-     * Specify the DI alias for the configured PDO instance that MwopGuestbook 
+     * Specify the DI alias for the configured PDO instance that MwopGuestbook
      * should use.
      */
     'pdo' => 'masterdb',

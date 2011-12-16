@@ -6,7 +6,7 @@ $spiffyDoctrineConfiguration = array(
     /**
      * PDO Connection DI alias
      *
-     * Specify the DI alias for the configured PDO instance that SpiffyDoctrine 
+     * Specify the DI alias for the configured PDO instance that SpiffyDoctrine
      * should use.
      */
     'pdo' => 'masterdb',
