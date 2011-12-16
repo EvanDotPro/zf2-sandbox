@@ -6,10 +6,10 @@ $edpUserSettings = array(
     /**
      * Database Abstraction
      *
-     * Specify which of the database abstraction layers (Doctrine2 or Zend\Db) 
+     * Specify which of the database abstraction layers (Doctrine2 or Zend\Db)
      * that you would like EdpUser to utilize.
      *
-     * Accepted values: 'doctrine' or 'zend_db' 
+     * Accepted values: 'doctrine' or 'zend_db'
      */
     'db_abstraction' => 'doctrine',
     //'db_abstraction' => 'zend_db',
@@ -17,7 +17,7 @@ $edpUserSettings = array(
     /**
      * PDO Connection DI alias
      *
-     * If using Zend\Db, please specify the DI alias for the configured PDO 
+     * If using Zend\Db, please specify the DI alias for the configured PDO
      * instance that EdpUser should use.
      */
     'pdo' => 'masterdb',
@@ -25,15 +25,15 @@ $edpUserSettings = array(
     /**
      * User Model Entity Class
      *
-     * Name of Entity class to use. Useful for using your own entity class 
-     * instead of the default one provided. Default is EdpUser\Model\User. 
+     * Name of Entity class to use. Useful for using your own entity class
+     * instead of the default one provided. Default is EdpUser\Model\User.
      */
     'user_model_class' => 'EdpUser\Model\User',
 
     /**
-     * Enable Username 
+     * Enable Username
      *
-     * Enables username field on the registration form, and allows users to log 
+     * Enables username field on the registration form, and allows users to log
      * in using their username OR email address. Default is false.
      *
      * Accepted values: boolean true or false
@@ -43,8 +43,8 @@ $edpUserSettings = array(
     /**
      * Enable Display Name
      *
-     * Enables a display name field on the registration form, which is persisted 
-     * in the database. Default value is false. 
+     * Enables a display name field on the registration form, which is persisted
+     * in the database. Default value is false.
      *
      * Accepted values: boolean true or false
      */
@@ -53,8 +53,8 @@ $edpUserSettings = array(
     /**
      * Require Activation
      *
-     * Require that the user verify their email address to activate their 
-     * account. Default value is false. (Note, this doesn't actually work yet, 
+     * Require that the user verify their email address to activate their
+     * account. Default value is false. (Note, this doesn't actually work yet,
      * but defaults an 'active' field in the DB to 0.)
      *
      * Accepted values: boolean true or false
@@ -64,19 +64,19 @@ $edpUserSettings = array(
     /**
      * Login After Registration
      *
-     * Automatically logs the user in after they successfully register. Default 
-     * value is true. 
+     * Automatically logs the user in after they successfully register. Default
+     * value is true.
      *
      * Accepted values: boolean true or false
      */
     'login_after_registration' => true,
 
     /**
-     * Registration Form Captcha 
+     * Registration Form Captcha
      *
-     * Determines if a captcha should be utilized on the user registration form. 
-     * Default value is true. (Note, right now this only utilizes a weak 
-     * Zend\Text\Figlet CAPTCHA, but I have plans to make all Zend\Captcha 
+     * Determines if a captcha should be utilized on the user registration form.
+     * Default value is true. (Note, right now this only utilizes a weak
+     * Zend\Text\Figlet CAPTCHA, but I have plans to make all Zend\Captcha
      * adapters work.)
      */
     'registration_form_captcha' => true,
@@ -84,21 +84,21 @@ $edpUserSettings = array(
     /**
      * Password Security
      *
-     * DO NOT CHANGE THE PASSWORD HASH SETTINGS FROM THEIR DEFAULTS 
-     * Unless A) you have done sufficient research and fully understand exactly 
-     * what you are changing, AND B) you have a very specific reason to deviate 
+     * DO NOT CHANGE THE PASSWORD HASH SETTINGS FROM THEIR DEFAULTS
+     * Unless A) you have done sufficient research and fully understand exactly
+     * what you are changing, AND B) you have a very specific reason to deviate
      * from the default settings and know what you're doing.
      *
-     * The password hash settings may be changed at any time without 
-     * invalidating existing user accounts. Existing user passwords will be 
+     * The password hash settings may be changed at any time without
+     * invalidating existing user accounts. Existing user passwords will be
      * re-hashed automatically on their next successful login.
      */
 
     /**
      * Password Hash Algorithm
      *
-     * Name of the hashing algorithm to use for hashing. Supported 
-     * algorithms are blowfish, sha512, and sha256. Default is blowfish. 
+     * Name of the hashing algorithm to use for hashing. Supported
+     * algorithms are blowfish, sha512, and sha256. Default is blowfish.
      *
      * Accepted values: 'blowfish', 'sha512', and 'sha256'
      */
@@ -107,9 +107,9 @@ $edpUserSettings = array(
     /**
      * Blowfish Cost
      *
-     * Only used if `password_hash_algorithm` is set to blowfish. The number represents the base-2 logarithm 
-     * of the iteration count used for hashing. Default is 10 (about 10 hashes 
-     * per second on an i5). 
+     * Only used if `password_hash_algorithm` is set to blowfish. The number represents the base-2 logarithm
+     * of the iteration count used for hashing. Default is 10 (about 10 hashes
+     * per second on an i5).
      *
      * Accepted values: integer between 4 and 31
      */
@@ -118,8 +118,8 @@ $edpUserSettings = array(
     /**
      * SHA-512 Rounds
      *
-     * Only used if `password_hash_algorithm` is set to sha512. The number 
-     * represents the iteration count used for hashing. Default is 5000. 
+     * Only used if `password_hash_algorithm` is set to sha512. The number
+     * represents the iteration count used for hashing. Default is 5000.
      *
      * Accepted values: integer between 1000 and 999999999
      */
@@ -128,8 +128,8 @@ $edpUserSettings = array(
     /**
      * SHA-256 Rounds
      *
-     * Only used if `password_hash_algorithm` is set to sha256. The number 
-     * represents the iteration count used for hashing. Default is 5000. 
+     * Only used if `password_hash_algorithm` is set to sha256. The number
+     * represents the iteration count used for hashing. Default is 5000.
      *
      * Accepted values: integer between 1000 and 999999999
      */
