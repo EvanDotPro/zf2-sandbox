@@ -1,21 +1,78 @@
-<?php echo $this->plugin('doctype') ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <?php echo $this->headTitle('ZF2 Sandbox Application') ?>
-</head>
-<body>
-<div id="header" style="background-color: #EEEEEE; height: 30px;">
-    <div id="header-logo" style="float: left">
-        <a href="<?php echo $this->url('home', array('controller' => 'index', 'action' => 'index')) ?>">
-            <b>ZF2 Sandbox Application</b></a>
-    </div>
-    <div id="header-navigation" style="float: right">
-        <a href="https://github.com/EvanDotPro/zf2-sandbox">Fork me on GitHub</a>
-    </div>
-</div>
+<?php echo $this->doctype() ?>
 
-<?php echo $this->raw('content') ?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle() ?>
 
-</body>
+    <?php echo $this->headMeta() ?>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <?php echo $this->placeholder('html5js') ?>
+
+    <![endif]-->
+
+    <?php echo $this->headScript() ?>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink() ?>
+    
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+      #captcha-element pre {
+        clear: left;
+        line-height: 15px;
+        width: 360px;
+      }
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <?php echo $this->placeholder('favicon') ?>
+
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="<?php echo $this->url('home') ?>">ZF2 Sandbox</a>
+
+          <ul class="nav">
+            <li class="active"><a href="<?php echo $this->url('home') ?>">Home</a></li>
+            <li><a href="<?php echo $this->url('mwopguestbook') ?>">Guestbook</a></li>
+            <li><a href="<?php echo $this->url('edpuser/login') ?>">User</a></li>
+          </ul>
+          <?php if ($this->edpUser()): ?>
+              <ul class="nav secondary-nav">
+                <li><?php echo $this->gravatar($this->edpUser()->getEmail(), array('img_size' => 25), array('style' => 'padding-top: 8px;')) ?></li>
+                <li><a href="<?php echo $this->url('edpuser') ?>"><?php echo $this->edpUser()->getDisplayName() ?></a></li>
+                <li><a href="<?php echo $this->url('edpuser/logout') ?>">Sign Out</a></li>
+              </ul>
+          <?php else: ?>
+              <form action="<?php echo $this->url('edpuser/login') ?>" method="post" class="pull-right">
+                <input name="email" class="input-small" type="text" placeholder="Username">
+                <input name="password" class="input-small" type="password" placeholder="Password">
+                <?php echo $this->formCsrf('csrf') ?>
+                <button class="btn" type="submit">Sign in</button>
+              </form>
+          <?php endif; ?>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <?php echo $this->raw('content'); ?>
+
+      <footer>
+        <p>Built by <a href="http://blog.evan.pro/">Evan Coury</a>.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
 </html>

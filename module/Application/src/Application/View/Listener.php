@@ -55,10 +55,6 @@ class Listener implements ListenerAggregate
 
     public function registerStaticListeners(StaticEventCollection $events, $locator)
     {
-        $ident   = 'Application\Controller\PageController';
-        $handler = $events->attach($ident, 'dispatch', array($this, 'renderPageController'), -50);
-        $this->staticListeners[] = array($ident, $handler);
-
         $ident   = 'Zend\Mvc\Controller\ActionController';
         $handler = $events->attach($ident, 'dispatch', array($this, 'renderView'), -50);
         $this->staticListeners[] = array($ident, $handler);
@@ -71,39 +67,6 @@ class Listener implements ListenerAggregate
             $events->detach($id, $handler);
             unset($this->staticListeners[$i]);
         }
-    }
-
-    public function renderPageController(MvcEvent $e)
-    {
-        $page = $e->getResult();
-        if ($page instanceof Response) {
-            return;
-        }
-
-        $response = $e->getResponse();
-        if ($response->isNotFound()) {
-            return;
-        } 
-
-        $routeMatch = $e->getRouteMatch();
-
-        if (!$routeMatch) {
-            $page = '404';
-        } else {
-            $page = $routeMatch->getParam('action', '404');
-        }
-
-        if ($page == '404') {
-            $response->setStatusCode(404);
-        }
-
-        $script     = 'error/' . $page . '.phtml';
-
-        // Action content
-        $content    = $this->view->render($script);
-        $e->setResult($content);
-
-        return $this->renderLayout($e);
     }
 
     public function renderView(MvcEvent $e)
@@ -127,7 +90,7 @@ class Listener implements ListenerAggregate
 
         $content    = $this->view->render($script, $vars);
 
-        $e->setResult($content);
+        $e->setParam('content', $content);
         return $content;
     }
 
@@ -142,13 +105,15 @@ class Listener implements ListenerAggregate
             return $response;
         }
 
-        $footer   = $e->getParam('footer', false);
-        $vars     = array('footer' => $footer);
+        $vars = $e->getResult();
+        if (is_scalar($vars)) {
+            $vars = array('content' => $vars);
+        } elseif (is_object($vars) && !$vars instanceof ArrayAccess) {
+            $vars = (array) $vars;
+        }
 
         if (false !== ($contentParam = $e->getParam('content', false))) {
             $vars['content'] = $contentParam;
-        } else {
-            $vars['content'] = $e->getResult();
         }
 
         $layout   = $this->view->render($this->layout, $vars);

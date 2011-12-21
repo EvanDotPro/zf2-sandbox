@@ -12,7 +12,6 @@ $edpUserSettings = array(
      * Accepted values: 'doctrine' or 'zend_db' 
      */
     'db_abstraction' => 'doctrine',
-    //'db_abstraction' => 'zend_db',
 
     /**
      * PDO Connection DI alias
@@ -28,7 +27,7 @@ $edpUserSettings = array(
      * Name of Entity class to use. Useful for using your own entity class 
      * instead of the default one provided. Default is EdpUser\Model\User. 
      */
-    'user_model_class' => 'EdpUser\Model\User',
+    'user_model_class' => 'EdpUser\Entity\User',
 
     /**
      * Enable Username 

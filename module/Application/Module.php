@@ -31,7 +31,7 @@ class Module implements AutoloaderProvider
         );
     }
 
-    public function getConfig($env = null)
+    public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
     }
@@ -67,14 +67,17 @@ class Module implements AutoloaderProvider
             return $this->view;
         }
 
-        $di     = $app->getLocator();
-        $view   = $di->get('view');
-        $url    = $view->plugin('url');
+        $di   = $app->getLocator();
+        $view = $di->get('view');
+        $url  = $view->plugin('url');
         $url->setRouter($app->getRouter());
-
+        $view->plugin('doctype')->setDoctype('HTML5');
         $view->plugin('headTitle')->setSeparator(' - ')
                                   ->setAutoEscape(false)
-                                  ->append('Application');
+                                  ->append('ZF2 Sandbox by Evan Coury');
+        $view->plugin('headLink')->appendStylesheet('http://twitter.github.com/bootstrap/1.4.0/bootstrap.css');
+        $view->plugin('headScript')->prependFile('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+        $view->plugin('headScript')->appendFile('http://twitter.github.com/bootstrap/1.4.0/bootstrap-alerts.js');
         $this->view = $view;
         return $view;
     }

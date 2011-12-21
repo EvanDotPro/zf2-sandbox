@@ -1,39 +1,29 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
 
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
+      <div class="hero-unit">
+        <h1>Welcome to ZF2!</h1>
+        <p>This is a simple example project built on <a href="https://github.com/zendframework/zf2">Zend Framework 2</a>. This project makes use of several available <a href="http://modules.zendframework.com/">ZF2 modules</a> and may serve as an example of how a modular ZF2 application could be organized.
+        <p><a class="btn primary large" href="https://github.com/EvanDotPro/zf2-sandbox">Fork this project on GitHub &raquo;</a></p>
+      </div>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span5">
+          <h2>Modules</h2>
+          <p>This project makes use of several ZF2 modules:</p>
+            <ul>
+                <li><a href="https://github.com/EvanDotPro/EdpUser">EdpUser</a></li>
+                <li><a href="https://github.com/EvanDotPro/EdpCommon">EdpCommon</a></li>
+                <li><a href="https://github.com/EvanDotPro/MwopGuestbook">MwopGuestbook</a></li>
+                <li><a href="https://github.com/SpiffyJr/SpiffyDoctrine">SpiffyDoctrine</a></li>
+                <li><a href="https://github.com/SpiffyJr/SpiffyDoctrineORM">SpiffyDoctrineORM</a></li>
+            </ul>
+        </div>
+        <div class="span5">
+          <h2>Shared DB Connection</h2>
+           <p>This project takes advantage of the powerful Zend\Di component to create just one single PDO connection to the database. This PDO connection is shared among all modules, regardless if they're using Zend\Db or Doctrine2.</p>
+       </div>
+        <div class="span6">
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-        margin: 0px auto;
-    }
-
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
-</style>
-<div id="welcome">
-    <h1>Welcome to Evan's <br/><span id="zf-name">Zend Framework</span><br/> Sandbox Project!</h1>
-
-    <h3>This is the project's main page</h3>
-
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-    </div>
-</div>
+          <h2>Questions or comments?</h2>
+          <p>If you have any questions or comments, feel free to visit the #zftalk.2 channel on the Freenode IRC network. Additionally, I can be reached on <a href="https://github.com/EvanDotPro">GitHub</a> or <a href="https://twitter.com/#!/EvanDotPro">Twitter</a>.</p>
+        </div>
+      </div>

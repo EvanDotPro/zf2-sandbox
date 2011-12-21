@@ -1,16 +1,19 @@
 <?php
 return array(
     'modules' => array(
-        'EdpCommon',
-        'EdpUser',
-        'MwopGuestbook',
-        'SpiffyDoctrine',
         'Application',
+        'EdpCommon',
+        'MwopGuestbook',
+        'EdpUser',
+        'EdpUserSession',
+        'SpiffyDoctrineORM',
+        'SpiffyDoctrine',
     ),
     'module_listener_options' => array( 
         'config_cache_enabled' => false,
-        'cache_dir'            => './data/cache',
-        'module_paths'         => array(
+        'cache_dir'            => 'data/cache',
+        'module_paths' => array(
+            '../devmodules',
             './module',
             './vendor',
         ),

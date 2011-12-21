@@ -8,6 +8,9 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        return array('content' => 'IT WORKS!');
+        return array(
+            'introbar'  => true,
+            'nowrapper' => true
+        );
     }
 }

@@ -22,7 +22,7 @@ $spiffyDoctrineConfiguration = array(
 return array(
     'di' => array(
         'instance' => array(
-            'doctrine_connection' => array(
+            'orm_connection' => array(
                 'parameters' => array(
                     'pdo' => $spiffyDoctrineConfiguration['pdo'],
                 ),

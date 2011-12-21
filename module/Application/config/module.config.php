@@ -1,8 +1,8 @@
 <?php
 return array(
-    'layout'             => 'layouts/layout.phtml',
-    'display_exceptions' => true,
-    'di'     => array(
+    'layout'                => 'layouts/layout.phtml',
+    'display_exceptions'    => true,
+    'di'                    => array(
         'instance' => array(
             'alias' => array(
                 'index' => 'Application\Controller\IndexController',
