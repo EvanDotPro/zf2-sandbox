@@ -5,7 +5,6 @@ return array(
         'EdpCommon',
         'MwopGuestbook',
         'EdpUser',
-        'EdpUserSession',
         'SpiffyDoctrineORM',
         'SpiffyDoctrine',
     ),
