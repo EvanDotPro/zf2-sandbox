@@ -13,3 +13,6 @@
 [submodule "vendor/MwopGuestbook"]
 	path = vendor/MwopGuestbook
 	url = git://github.com/EvanDotPro/MwopGuestbook.git
+[submodule "vendor/SpiffyDoctrineORM"]
+	path = vendor/SpiffyDoctrineORM
+	url = git://github.com/SpiffyJr/SpiffyDoctrineORM.git
