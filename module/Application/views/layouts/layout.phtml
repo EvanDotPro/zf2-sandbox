@@ -46,16 +46,16 @@
             <li><a href="<?php echo $this->url('mwopguestbook') ?>">Guestbook</a></li>
             <li><a href="<?php echo $this->url('edpuser/login') ?>">User</a></li>
           </ul>
-          <?php if ($this->edpUser()): ?>
+          <?php if ($this->edpUserIdentity()): ?>
               <ul class="nav secondary-nav">
-                <li><?php echo $this->gravatar($this->edpUser()->getEmail(), array('img_size' => 25), array('style' => 'padding-top: 8px;')) ?></li>
-                <li><a href="<?php echo $this->url('edpuser') ?>"><?php echo $this->edpUser()->getDisplayName() ?></a></li>
+                <li><?php echo $this->gravatar($this->edpUserIdentity()->getEmail(), array('img_size' => 25), array('style' => 'padding-top: 8px;')) ?></li>
+                <li><a href="<?php echo $this->url('edpuser') ?>"><?php echo $this->edpUserIdentity()->getDisplayName() ?></a></li>
                 <li><a href="<?php echo $this->url('edpuser/logout') ?>">Sign Out</a></li>
               </ul>
           <?php else: ?>
               <form action="<?php echo $this->url('edpuser/login') ?>" method="post" class="pull-right">
-                <input name="email" class="input-small" type="text" placeholder="Username">
-                <input name="password" class="input-small" type="password" placeholder="Password">
+                <input name="identity" class="input-small" type="text" placeholder="Username">
+                <input name="credential" class="input-small" type="password" placeholder="Password">
                 <?php echo $this->formCsrf('csrf') ?>
                 <button class="btn" type="submit">Sign in</button>
               </form>
